@@ -30,10 +30,10 @@ namespace Monogame_Topic_3___Animation
 
 
             greyTribbleRect = new Rectangle(300, 200, 100, 100);
-            greyTribbleSpeed = new Vector2 (3, -2);
+            greyTribbleSpeed = new Vector2 (3, 0);
 
             brownTribbleRect = new Rectangle(400, 60, 75, 75);
-            brownTribbleSpeed = new Vector2 (-3, 2);
+            brownTribbleSpeed = new Vector2 (0, 2);
 
             orangeTribbleRect = new Rectangle(50, 490, 110, 110);
             orangeTribbleSpeed = new Vector2 (3, 2);
@@ -66,14 +66,9 @@ namespace Monogame_Topic_3___Animation
             greyTribbleRect.X += (int)greyTribbleSpeed.X;
             greyTribbleRect.Y += (int)greyTribbleSpeed.Y;
 
-            if (greyTribbleRect.X  + greyTribbleRect.Width > window.Width || greyTribbleRect.X < window.Left)
+            if (greyTribbleRect.X > window.Width)
             {
-                greyTribbleSpeed.X *= -1;
-            }
-
-            if (greyTribbleRect.Y < window.Top || greyTribbleRect.Y + greyTribbleRect.Height > window.Bottom)
-            {
-                greyTribbleSpeed.Y *= -1;
+                greyTribbleRect.X = window.Left - greyTribbleRect.Width;
             }
 
             //Brown tribble
