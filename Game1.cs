@@ -75,14 +75,16 @@ namespace Monogame_Topic_3___Animation
             brownTribbleRect.X += (int)brownTribbleSpeed.X;
             brownTribbleRect.Y += (int)brownTribbleSpeed.Y;
 
-            if (brownTribbleRect.X + brownTribbleRect.Width > window.Width || brownTribbleRect.X < window.Left)
-            {
-                brownTribbleSpeed.X *= -1;
-            }
-
             if (brownTribbleRect.Y < window.Top || brownTribbleRect.Y + brownTribbleRect.Height > window.Bottom)
             {
-                brownTribbleSpeed.Y *= -1;
+                brownTribbleSpeed.Y *= -2;
+            }
+
+            if (brownTribbleSpeed.Y > 1000)
+            {
+                brownTribbleSpeed.Y = 2;
+                brownTribbleRect.X = 400;
+                brownTribbleRect.Y = 60;
             }
 
             //Orange tribble
