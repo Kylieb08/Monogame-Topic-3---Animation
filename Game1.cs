@@ -10,7 +10,7 @@ namespace Monogame_Topic_3___Animation
         private SpriteBatch _spriteBatch;
         Texture2D greyTribbleTexture, brownTribbleTexture, orangeTribbleTexture, creamTribbleTexture;
         Rectangle greyTribbleRect, brownTribbleRect, orangeTribbleRect, creamTribbleRect, window;
-        Vector2 greyTribbleSpeed;
+        Vector2 greyTribbleSpeed, brownTribbleSpeed, orangeTribbleSpeed, creamTribbleSpeed;
 
         public Game1()
         {
@@ -32,6 +32,15 @@ namespace Monogame_Topic_3___Animation
             greyTribbleRect = new Rectangle(300, 200, 100, 100);
             greyTribbleSpeed = new Vector2 (3, -2);
 
+            brownTribbleRect = new Rectangle(400, 60, 75, 75);
+            brownTribbleSpeed = new Vector2 (-3, 2);
+
+            orangeTribbleRect = new Rectangle(50, 490, 110, 110);
+            orangeTribbleSpeed = new Vector2 (3, 2);
+
+            creamTribbleRect = new Rectangle(600, 300, 90, 90);
+            creamTribbleSpeed = new Vector2 (-3, -2);
+
             base.Initialize();
         }
 
@@ -41,6 +50,9 @@ namespace Monogame_Topic_3___Animation
 
             // TODO: use this.Content to load your game content here
             greyTribbleTexture = Content.Load<Texture2D>("tribbleGrey");
+            brownTribbleTexture = Content.Load<Texture2D>("tribbleBrown");
+            orangeTribbleTexture = Content.Load<Texture2D>("tribbleOrange");
+            creamTribbleTexture = Content.Load<Texture2D>("tribbleCream");
         }
 
         protected override void Update(GameTime gameTime)
@@ -49,6 +61,8 @@ namespace Monogame_Topic_3___Animation
                 Exit();
 
             // TODO: Add your update logic here
+
+            //Grey tribble
             greyTribbleRect.X += (int)greyTribbleSpeed.X;
             greyTribbleRect.Y += (int)greyTribbleSpeed.Y;
 
@@ -62,6 +76,48 @@ namespace Monogame_Topic_3___Animation
                 greyTribbleSpeed.Y *= -1;
             }
 
+            //Brown tribble
+            brownTribbleRect.X += (int)brownTribbleSpeed.X;
+            brownTribbleRect.Y += (int)brownTribbleSpeed.Y;
+
+            if (brownTribbleRect.X + brownTribbleRect.Width > window.Width || brownTribbleRect.X < window.Left)
+            {
+                brownTribbleSpeed.X *= -1;
+            }
+
+            if (brownTribbleRect.Y < window.Top || brownTribbleRect.Y + brownTribbleRect.Height > window.Bottom)
+            {
+                brownTribbleSpeed.Y *= -1;
+            }
+
+            //Orange tribble
+            orangeTribbleRect.X += (int)orangeTribbleSpeed.X;
+            orangeTribbleRect.Y += (int)orangeTribbleSpeed.Y;
+
+            if (orangeTribbleRect.X + orangeTribbleRect.Width > window.Width || orangeTribbleRect.X < window.Left)
+            {
+                orangeTribbleSpeed.X *= -1;
+            }
+
+            if (orangeTribbleRect.Y < window.Top || orangeTribbleRect.Y + orangeTribbleRect.Height > window.Bottom)
+            {
+                orangeTribbleSpeed.Y *= -1;
+            }
+
+            //Cream tribble
+            creamTribbleRect.X += (int)creamTribbleSpeed.X;
+            creamTribbleRect.Y += (int)creamTribbleSpeed.Y;
+
+            if (creamTribbleRect.X + creamTribbleRect.Width > window.Width || creamTribbleRect.X < window.Left)
+            {
+                creamTribbleSpeed.X *= -1;
+            }
+
+            if (creamTribbleRect.Y < window.Top || creamTribbleRect.Y + creamTribbleRect.Height > window.Bottom)
+            {
+                creamTribbleSpeed.Y *= -1;
+            }
+
             base.Update(gameTime);
         }
 
@@ -73,6 +129,9 @@ namespace Monogame_Topic_3___Animation
             _spriteBatch.Begin();
 
             _spriteBatch.Draw(greyTribbleTexture, greyTribbleRect, Color.White);
+            _spriteBatch.Draw(brownTribbleTexture, brownTribbleRect, Color.White);
+            _spriteBatch.Draw(orangeTribbleTexture, orangeTribbleRect, Color.White);
+            _spriteBatch.Draw(creamTribbleTexture, creamTribbleRect, Color.White);
 
             _spriteBatch.End();
 
