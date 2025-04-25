@@ -29,7 +29,7 @@ namespace Monogame_Topic_3___Animation
 
 
 
-            greyTribbleRect = new Rectangle(10, 300, 100, 100);
+            greyTribbleRect = new Rectangle(300, 200, 100, 100);
             greyTribbleSpeed = new Vector2 (3, -2);
 
             base.Initialize();
