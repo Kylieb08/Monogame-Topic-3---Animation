@@ -28,8 +28,9 @@ namespace Monogame_Topic_3___Animation
             _graphics.ApplyChanges();
 
 
+
             greyTribbleRect = new Rectangle(10, 300, 100, 100);
-            greyTribbleSpeed = new Vector2 (2, 0);
+            greyTribbleSpeed = new Vector2 (3, -2);
 
             base.Initialize();
         }
@@ -48,6 +49,18 @@ namespace Monogame_Topic_3___Animation
                 Exit();
 
             // TODO: Add your update logic here
+            greyTribbleRect.X += (int)greyTribbleSpeed.X;
+            greyTribbleRect.Y += (int)greyTribbleSpeed.Y;
+
+            if (greyTribbleRect.X  + greyTribbleRect.Width > window.Width || greyTribbleRect.X < window.Left)
+            {
+                greyTribbleSpeed.X *= -1;
+            }
+
+            if (greyTribbleRect.Y < window.Top || greyTribbleRect.Y + greyTribbleRect.Height > window.Bottom)
+            {
+                greyTribbleSpeed.Y *= -1;
+            }
 
             base.Update(gameTime);
         }
