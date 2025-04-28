@@ -74,7 +74,7 @@ namespace Monogame_Topic_3___Animation
 
             if (greyTribbleRect.X > window.Width)
             {
-                greyTribbleHeight = generator.Next(25, 250);
+                greyTribbleHeight = generator.Next(15, 250);
                 greyTribbleWidth = generator.Next(25, 250);
                 greyTribbleRect.Width = greyTribbleWidth;
                 greyTribbleRect.Height = greyTribbleHeight;
