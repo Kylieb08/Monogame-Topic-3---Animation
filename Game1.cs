@@ -36,13 +36,13 @@ namespace Monogame_Topic_3___Animation
 
 
             greyTribbleRect = new Rectangle(300, 200, greyTribbleWidth, greyTribbleHeight);
-            greyTribbleSpeed = new Vector2 (3, 0);
+            greyTribbleSpeed = new Vector2 (5, 0);
 
             brownTribbleRect = new Rectangle(400, 60, 75, 75);
             brownTribbleSpeed = new Vector2 (0, 2);
 
             orangeTribbleRect = new Rectangle(300, 490, 110, 110);
-            orangeTribbleSpeed = new Vector2 (3, 3);
+            orangeTribbleSpeed = new Vector2 (4, 4);
 
             creamTribbleRect = new Rectangle(600, 300, 90, 90);
             creamTribbleSpeed = new Vector2 (creamTribbleSpeedX, creamTribbleSpeedY);
@@ -146,7 +146,7 @@ namespace Monogame_Topic_3___Animation
 
         protected override void Draw(GameTime gameTime)
         {
-            GraphicsDevice.Clear(Color.CornflowerBlue);
+            GraphicsDevice.Clear(Color.DarkOrchid);
 
             // TODO: Add your drawing code here
             _spriteBatch.Begin();
