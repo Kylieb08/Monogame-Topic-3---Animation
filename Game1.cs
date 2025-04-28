@@ -1,4 +1,6 @@
-﻿using Microsoft.Xna.Framework;
+﻿using System;
+using System.Runtime.CompilerServices;
+using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
 
@@ -6,11 +8,15 @@ namespace Monogame_Topic_3___Animation
 {
     public class Game1 : Game
     {
+
+        Random generator = new Random();
+
         private GraphicsDeviceManager _graphics;
         private SpriteBatch _spriteBatch;
         Texture2D greyTribbleTexture, brownTribbleTexture, orangeTribbleTexture, creamTribbleTexture;
         Rectangle greyTribbleRect, brownTribbleRect, orangeTribbleRect, creamTribbleRect, window;
         Vector2 greyTribbleSpeed, brownTribbleSpeed, orangeTribbleSpeed, creamTribbleSpeed;
+        int creamTribbleX, creamTribbleY, creamTribbleSpeedX = -3, creamTribbleSpeedY = -2, greyTribbleWidth = 100, greyTribbleHeight = 100;
 
         public Game1()
         {
@@ -29,7 +35,7 @@ namespace Monogame_Topic_3___Animation
 
 
 
-            greyTribbleRect = new Rectangle(300, 200, 100, 100);
+            greyTribbleRect = new Rectangle(300, 200, greyTribbleWidth, greyTribbleHeight);
             greyTribbleSpeed = new Vector2 (3, 0);
 
             brownTribbleRect = new Rectangle(400, 60, 75, 75);
@@ -39,7 +45,7 @@ namespace Monogame_Topic_3___Animation
             orangeTribbleSpeed = new Vector2 (3, 2);
 
             creamTribbleRect = new Rectangle(600, 300, 90, 90);
-            creamTribbleSpeed = new Vector2 (-3, -2);
+            creamTribbleSpeed = new Vector2 (creamTribbleSpeedX, creamTribbleSpeedY);
 
             base.Initialize();
         }
@@ -68,6 +74,10 @@ namespace Monogame_Topic_3___Animation
 
             if (greyTribbleRect.X > window.Width)
             {
+                greyTribbleHeight = generator.Next(50, 250);
+                greyTribbleWidth = generator.Next(50, 250);
+                greyTribbleRect.Width = greyTribbleWidth;
+                greyTribbleRect.Height = greyTribbleHeight;
                 greyTribbleRect.X = window.Left - greyTribbleRect.Width;
             }
 
@@ -107,11 +117,27 @@ namespace Monogame_Topic_3___Animation
 
             if (creamTribbleRect.X + creamTribbleRect.Width > window.Width || creamTribbleRect.X < window.Left)
             {
+                creamTribbleX = generator.Next(1, 710);
+                creamTribbleRect.X = creamTribbleX;
+                creamTribbleY = generator.Next(1, 510);
+                creamTribbleRect.Y = creamTribbleY;
+                creamTribbleSpeedX = generator.Next(1, 6);
+                creamTribbleSpeedY = generator.Next(1, 6);
+                creamTribbleSpeed.X = creamTribbleSpeedX;
+                creamTribbleSpeed.Y = creamTribbleSpeedY;
                 creamTribbleSpeed.X *= -1;
             }
 
             if (creamTribbleRect.Y < window.Top || creamTribbleRect.Y + creamTribbleRect.Height > window.Bottom)
             {
+                creamTribbleX = generator.Next(1, 710);
+                creamTribbleRect.X = creamTribbleX;
+                creamTribbleY = generator.Next(1, 510);
+                creamTribbleRect.Y = creamTribbleY;
+                creamTribbleSpeedX = generator.Next(1, 6);
+                creamTribbleSpeedY = generator.Next(1, 6);
+                creamTribbleSpeed.X = creamTribbleSpeedX;
+                creamTribbleSpeed.Y = creamTribbleSpeedY;
                 creamTribbleSpeed.Y *= -1;
             }
 
