@@ -121,8 +121,8 @@ namespace Monogame_Topic_3___Animation
                 creamTribbleRect.X = creamTribbleX;
                 creamTribbleY = generator.Next(1, 510);
                 creamTribbleRect.Y = creamTribbleY;
-                creamTribbleSpeedX = generator.Next(1, 6);
-                creamTribbleSpeedY = generator.Next(1, 6);
+                creamTribbleSpeedX = generator.Next(1, 10);
+                creamTribbleSpeedY = generator.Next(1, 10);
                 creamTribbleSpeed.X = creamTribbleSpeedX;
                 creamTribbleSpeed.Y = creamTribbleSpeedY;
                 creamTribbleSpeed.X *= -1;
