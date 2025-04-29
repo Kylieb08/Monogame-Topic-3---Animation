@@ -11,6 +11,8 @@ namespace Monogame_Topic_3___Animation
 
         Random generator = new Random();
 
+        bool blueScreen;
+
         private GraphicsDeviceManager _graphics;
         private SpriteBatch _spriteBatch;
         Texture2D greyTribbleTexture, brownTribbleTexture, orangeTribbleTexture, creamTribbleTexture, blueScreenTexture;
@@ -88,7 +90,7 @@ namespace Monogame_Topic_3___Animation
             {
                 if (greyTribbleRect.Contains(mouseState.Position))
                 {
-                    
+                    blueScreen = true;
                 }
             }
 
