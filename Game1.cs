@@ -17,6 +17,7 @@ namespace Monogame_Topic_3___Animation
         Rectangle greyTribbleRect, brownTribbleRect, orangeTribbleRect, creamTribbleRect, window;
         Vector2 greyTribbleSpeed, brownTribbleSpeed, orangeTribbleSpeed, creamTribbleSpeed;
         int creamTribbleX, creamTribbleY, creamTribbleSpeedX = -3, creamTribbleSpeedY = -2, greyTribbleWidth = 100, greyTribbleHeight = 100;
+        MouseState mouseState, prevMouseState;
 
         public Game1()
         {
@@ -67,6 +68,8 @@ namespace Monogame_Topic_3___Animation
                 Exit();
 
             // TODO: Add your update logic here
+            prevMouseState = mouseState;
+            mouseState = Mouse.GetState();
 
             //Grey tribble
             greyTribbleRect.X += (int)greyTribbleSpeed.X;
@@ -97,6 +100,15 @@ namespace Monogame_Topic_3___Animation
                 brownTribbleRect.Y = 60;
             }
 
+            if (mouseState.LeftButton == ButtonState.Pressed && prevMouseState.LeftButton == ButtonState.Released)
+            {
+                if (brownTribbleRect.Contains(mouseState.Position))
+                {
+                    orangeTribbleRect.X = 300;
+                    orangeTribbleRect.Y = 490;
+                }
+            }
+
             //Orange tribble
             orangeTribbleRect.X += (int)orangeTribbleSpeed.X;
             orangeTribbleRect.Y += (int)orangeTribbleSpeed.Y;
@@ -109,6 +121,15 @@ namespace Monogame_Topic_3___Animation
             if (orangeTribbleRect.Y < window.Top || orangeTribbleRect.Y + orangeTribbleRect.Height > window.Bottom)
             {
                 orangeTribbleSpeed.Y *= -1;
+            }
+
+            if (mouseState.LeftButton == ButtonState.Pressed && prevMouseState.LeftButton == ButtonState.Released)
+            {
+                if (orangeTribbleRect.Contains(mouseState.Position))
+                {
+                    orangeTribbleRect.X = -200;
+                    orangeTribbleRect.Y = -200;
+                }
             }
 
             //Cream tribble
