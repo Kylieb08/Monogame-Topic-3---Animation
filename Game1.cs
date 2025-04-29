@@ -13,8 +13,8 @@ namespace Monogame_Topic_3___Animation
 
         private GraphicsDeviceManager _graphics;
         private SpriteBatch _spriteBatch;
-        Texture2D greyTribbleTexture, brownTribbleTexture, orangeTribbleTexture, creamTribbleTexture;
-        Rectangle greyTribbleRect, brownTribbleRect, orangeTribbleRect, creamTribbleRect, window;
+        Texture2D greyTribbleTexture, brownTribbleTexture, orangeTribbleTexture, creamTribbleTexture, blueScreenTexture;
+        Rectangle greyTribbleRect, brownTribbleRect, orangeTribbleRect, creamTribbleRect, window, blueScreenRect;
         Vector2 greyTribbleSpeed, brownTribbleSpeed, orangeTribbleSpeed, creamTribbleSpeed;
         int creamTribbleX, creamTribbleY, creamTribbleSpeedX = -3, creamTribbleSpeedY = -2, greyTribbleWidth = 100, greyTribbleHeight = 100;
         MouseState mouseState, prevMouseState;
@@ -34,8 +34,6 @@ namespace Monogame_Topic_3___Animation
             _graphics.PreferredBackBufferHeight = 600;
             _graphics.ApplyChanges();
 
-
-
             greyTribbleRect = new Rectangle(300, 200, greyTribbleWidth, greyTribbleHeight);
             greyTribbleSpeed = new Vector2 (5, 0);
 
@@ -47,6 +45,8 @@ namespace Monogame_Topic_3___Animation
 
             creamTribbleRect = new Rectangle(600, 300, 90, 90);
             creamTribbleSpeed = new Vector2 (creamTribbleSpeedX, creamTribbleSpeedY);
+
+            blueScreenRect = new Rectangle(0, 0, 800, 600);
 
             base.Initialize();
         }
@@ -82,6 +82,14 @@ namespace Monogame_Topic_3___Animation
                 greyTribbleRect.Width = greyTribbleWidth;
                 greyTribbleRect.Height = greyTribbleHeight;
                 greyTribbleRect.X = window.Left - greyTribbleRect.Width;
+            }
+
+            if (mouseState.LeftButton == ButtonState.Pressed && prevMouseState.LeftButton == ButtonState.Released)
+            {
+                if (greyTribbleRect.Contains(mouseState.Position))
+                {
+                    
+                }
             }
 
             //Brown tribble
