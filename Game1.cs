@@ -11,7 +11,7 @@ namespace Monogame_Topic_3___Animation
 
         Random generator = new Random();
 
-        bool blueScreen;
+        bool blueScreen = false;
 
         private GraphicsDeviceManager _graphics;
         private SpriteBatch _spriteBatch;
@@ -19,6 +19,7 @@ namespace Monogame_Topic_3___Animation
         Rectangle greyTribbleRect, brownTribbleRect, orangeTribbleRect, creamTribbleRect, window, blueScreenRect;
         Vector2 greyTribbleSpeed, brownTribbleSpeed, orangeTribbleSpeed, creamTribbleSpeed;
         int creamTribbleX, creamTribbleY, creamTribbleSpeedX = -3, creamTribbleSpeedY = -2, greyTribbleWidth = 100, greyTribbleHeight = 100;
+        int creamTribbleWidth = 90, creamTribbleHeight = 90;
         MouseState mouseState, prevMouseState;
 
         public Game1()
@@ -62,6 +63,7 @@ namespace Monogame_Topic_3___Animation
             brownTribbleTexture = Content.Load<Texture2D>("tribbleBrown");
             orangeTribbleTexture = Content.Load<Texture2D>("tribbleOrange");
             creamTribbleTexture = Content.Load<Texture2D>("tribbleCream");
+            blueScreenTexture = Content.Load<Texture2D>("Bsodwindows10");
         }
 
         protected override void Update(GameTime gameTime)
@@ -190,6 +192,11 @@ namespace Monogame_Topic_3___Animation
             _spriteBatch.Draw(brownTribbleTexture, brownTribbleRect, Color.White);
             _spriteBatch.Draw(orangeTribbleTexture, orangeTribbleRect, Color.White);
             _spriteBatch.Draw(creamTribbleTexture, creamTribbleRect, Color.White);
+
+            if (blueScreen == true)
+            {
+                _spriteBatch.Draw(blueScreenTexture, blueScreenRect, Color.White);
+            }
 
             _spriteBatch.End();
 
