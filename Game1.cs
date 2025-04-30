@@ -63,7 +63,7 @@ namespace Monogame_Topic_3___Animation
             brownTribbleTexture = Content.Load<Texture2D>("tribbleBrown");
             orangeTribbleTexture = Content.Load<Texture2D>("tribbleOrange");
             creamTribbleTexture = Content.Load<Texture2D>("tribbleCream");
-            blueScreenTexture = Content.Load<Texture2D>("Bsodwindows10");
+            blueScreenTexture = Content.Load<Texture2D>("Blue screen of death");
         }
 
         protected override void Update(GameTime gameTime)
