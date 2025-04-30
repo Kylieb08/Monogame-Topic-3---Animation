@@ -116,6 +116,8 @@ namespace Monogame_Topic_3___Animation
                 {
                     orangeTribbleRect.X = 300;
                     orangeTribbleRect.Y = 490;
+                    orangeTribbleSpeed.X = 4;
+                    orangeTribbleSpeed.Y = 4;
                 }
             }
 
@@ -139,6 +141,8 @@ namespace Monogame_Topic_3___Animation
                 {
                     orangeTribbleRect.X = -200;
                     orangeTribbleRect.Y = -200;
+                    orangeTribbleSpeed.X = 0;
+                    orangeTribbleSpeed.Y = 0;
                 }
             }
 
