@@ -12,6 +12,7 @@ namespace Monogame_Topic_3___Animation
         Random generator = new Random();
 
         bool blueScreen = false;
+        float seconds, blueScreenCompleteCount, roundedBlueScreenCompleteCount;
 
         private GraphicsDeviceManager _graphics;
         private SpriteBatch _spriteBatch;
@@ -19,7 +20,7 @@ namespace Monogame_Topic_3___Animation
         Rectangle greyTribbleRect, brownTribbleRect, orangeTribbleRect, creamTribbleRect, window, blueScreenRect;
         Vector2 greyTribbleSpeed, brownTribbleSpeed, orangeTribbleSpeed, creamTribbleSpeed;
         int creamTribbleX, creamTribbleY, creamTribbleSpeedX = -3, creamTribbleSpeedY = -2, greyTribbleWidth = 100, greyTribbleHeight = 100;
-        int creamTribbleWidth = 90, creamTribbleHeight = 90, blueScreenCompleteCount;
+        int creamTribbleWidth = 90, creamTribbleHeight = 90;
         MouseState mouseState, prevMouseState;
         SpriteFont blueScreenComplete;
 
@@ -68,7 +69,7 @@ namespace Monogame_Topic_3___Animation
             creamTribbleTexture = Content.Load<Texture2D>("tribbleCream");
             blueScreenTexture = Content.Load<Texture2D>("Blue screen of death");
 
-            blueScreenComplete = Content.Load<SpriteFont>("File");
+            blueScreenComplete = Content.Load<SpriteFont>("BlueScreenCountFont");
         }
 
         protected override void Update(GameTime gameTime)
@@ -100,6 +101,8 @@ namespace Monogame_Topic_3___Animation
                     blueScreen = true;
                 }
             }
+
+            seconds = (float)gameTime.ElapsedGameTime.TotalSeconds;
 
             //Brown tribble
             brownTribbleRect.X += (int)brownTribbleSpeed.X;
@@ -200,9 +203,16 @@ namespace Monogame_Topic_3___Animation
 
             if (blueScreen == true)
             {
+                blueScreenCompleteCount += seconds;
+                roundedBlueScreenCompleteCount = (float)Decimal.Round((decimal)(float)blueScreenCompleteCount, 0);
                 _spriteBatch.Draw(blueScreenTexture, blueScreenRect, Color.White);
-                _spriteBatch.DrawString(blueScreenComplete, Convert.ToString(blueScreenCompleteCount), new Vector2(85, 343), Color.Black);
-
+                _spriteBatch.DrawString(blueScreenComplete, Convert.ToString(roundedBlueScreenCompleteCount), new Vector2(85, 343), Color.White);
+                if (roundedBlueScreenCompleteCount == 100)
+                {
+                    blueScreen = false;
+                    blueScreenCompleteCount = 0;
+                }
+                
             }
 
             

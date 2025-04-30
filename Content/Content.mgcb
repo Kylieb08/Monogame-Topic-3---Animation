@@ -25,6 +25,13 @@
 /processorParam:TextureFormat=Color
 /build:Blue screen of death.png
 
+#begin BlueScreenCountFont.spritefont
+/importer:FontDescriptionImporter
+/processor:FontDescriptionProcessor
+/processorParam:PremultiplyAlpha=True
+/processorParam:TextureFormat=Compressed
+/build:BlueScreenCountFont.spritefont
+
 #begin Bsodwindows10.png
 /importer:TextureImporter
 /processor:TextureProcessor
@@ -36,13 +43,6 @@
 /processorParam:MakeSquare=False
 /processorParam:TextureFormat=Color
 /build:Bsodwindows10.png
-
-#begin File.spritefont
-/importer:FontDescriptionImporter
-/processor:FontDescriptionProcessor
-/processorParam:PremultiplyAlpha=True
-/processorParam:TextureFormat=Compressed
-/build:File.spritefont
 
 #begin tribbleBrown.png
 /importer:TextureImporter
