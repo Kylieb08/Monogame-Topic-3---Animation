@@ -19,8 +19,9 @@ namespace Monogame_Topic_3___Animation
         Rectangle greyTribbleRect, brownTribbleRect, orangeTribbleRect, creamTribbleRect, window, blueScreenRect;
         Vector2 greyTribbleSpeed, brownTribbleSpeed, orangeTribbleSpeed, creamTribbleSpeed;
         int creamTribbleX, creamTribbleY, creamTribbleSpeedX = -3, creamTribbleSpeedY = -2, greyTribbleWidth = 100, greyTribbleHeight = 100;
-        int creamTribbleWidth = 90, creamTribbleHeight = 90;
+        int creamTribbleWidth = 90, creamTribbleHeight = 90, blueScreenCompleteCount;
         MouseState mouseState, prevMouseState;
+        SpriteFont blueScreenComplete;
 
         public Game1()
         {
@@ -51,6 +52,8 @@ namespace Monogame_Topic_3___Animation
 
             blueScreenRect = new Rectangle(0, 0, 800, 600);
 
+            blueScreenCompleteCount = 0;
+
             base.Initialize();
         }
 
@@ -64,6 +67,8 @@ namespace Monogame_Topic_3___Animation
             orangeTribbleTexture = Content.Load<Texture2D>("tribbleOrange");
             creamTribbleTexture = Content.Load<Texture2D>("tribbleCream");
             blueScreenTexture = Content.Load<Texture2D>("Blue screen of death");
+
+            blueScreenComplete = Content.Load<SpriteFont>("File");
         }
 
         protected override void Update(GameTime gameTime)
@@ -196,7 +201,11 @@ namespace Monogame_Topic_3___Animation
             if (blueScreen == true)
             {
                 _spriteBatch.Draw(blueScreenTexture, blueScreenRect, Color.White);
+                _spriteBatch.DrawString(blueScreenComplete, Convert.ToString(blueScreenCompleteCount), new Vector2(85, 343), Color.Black);
+
             }
+
+            
 
             _spriteBatch.End();
 
