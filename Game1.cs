@@ -245,7 +245,8 @@ namespace Monogame_Topic_3___Animation
                 //Drawing Bluescreen
                 if (blueScreen == true)
                 {
-                    blueScreenCompleteCount += seconds;
+                    //if (seconds)
+                    blueScreenCompleteCount += generator.Next(2, 8);
                     roundedBlueScreenCompleteCount = (float)Decimal.Round((decimal)(float)blueScreenCompleteCount, 0);
                     _spriteBatch.Draw(blueScreenTexture, blueScreenRect, Color.White);
                     _spriteBatch.DrawString(blueScreenCompleteFont, Convert.ToString(roundedBlueScreenCompleteCount), new Vector2(85, 343), Color.White);
