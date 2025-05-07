@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Runtime.CompilerServices;
+using System.Threading;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
@@ -23,7 +24,7 @@ namespace Monogame_Topic_3___Animation
 
         private GraphicsDeviceManager _graphics;
         private SpriteBatch _spriteBatch;
-        Texture2D greyTribbleTexture, brownTribbleTexture, orangeTribbleTexture, creamTribbleTexture, blueScreenTexture, tribbleIntroTexture;
+        Texture2D greyTribbleTexture, brownTribbleTexture, orangeTribbleTexture, creamTribbleTexture, blueScreenTexture, tribbleIntroTexture, tribbleEndTexture;
         Rectangle greyTribbleRect, brownTribbleRect, orangeTribbleRect, creamTribbleRect, window, blueScreenRect;
         Vector2 greyTribbleSpeed, brownTribbleSpeed, orangeTribbleSpeed, creamTribbleSpeed;
         int creamTribbleX, creamTribbleY, creamTribbleSpeedX = -3, creamTribbleSpeedY = -2, greyTribbleWidth = 100, greyTribbleHeight = 100;
@@ -84,6 +85,7 @@ namespace Monogame_Topic_3___Animation
             blueScreenComplete = Content.Load<SpriteFont>("BlueScreenCountFont");
 
             tribbleIntroTexture = Content.Load<Texture2D>("tribbleIntro");
+            tribbleEndTexture = Content.Load<Texture2D>("tribbleEnd");
         }
 
         protected override void Update(GameTime gameTime)
@@ -245,7 +247,7 @@ namespace Monogame_Topic_3___Animation
                         blueScreen = false;
                         blueScreenCompleteCount = 0;
                     }
-                    if (blueScreenCount >= 0)
+                    if (blueScreenCount >= 4)
                     {
                         screen = Screen.End;
                     }
@@ -255,7 +257,7 @@ namespace Monogame_Topic_3___Animation
 
             else if (screen == Screen.End)
             {
-
+                _spriteBatch.Draw(tribbleEndTexture, window, Color.White);
             }
 
             _spriteBatch.End();
