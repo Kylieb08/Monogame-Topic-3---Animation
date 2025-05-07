@@ -32,17 +32,12 @@
 /processorParam:TextureFormat=Compressed
 /build:BlueScreenCountFont.spritefont
 
-#begin Bsodwindows10.png
-/importer:TextureImporter
-/processor:TextureProcessor
-/processorParam:ColorKeyColor=255,0,255,255
-/processorParam:ColorKeyEnabled=True
-/processorParam:GenerateMipmaps=False
+#begin IntroScreen.spritefont
+/importer:FontDescriptionImporter
+/processor:FontDescriptionProcessor
 /processorParam:PremultiplyAlpha=True
-/processorParam:ResizeToPowerOfTwo=False
-/processorParam:MakeSquare=False
-/processorParam:TextureFormat=Color
-/build:Bsodwindows10.png
+/processorParam:TextureFormat=Compressed
+/build:IntroScreen.spritefont
 
 #begin tribbleBrown.png
 /importer:TextureImporter

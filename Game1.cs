@@ -30,7 +30,7 @@ namespace Monogame_Topic_3___Animation
         int creamTribbleX, creamTribbleY, creamTribbleSpeedX = -3, creamTribbleSpeedY = -2, greyTribbleWidth = 100, greyTribbleHeight = 100;
         int creamTribbleWidth = 90, creamTribbleHeight = 90, blueScreenCount = 0;
         MouseState mouseState, prevMouseState;
-        SpriteFont blueScreenComplete;
+        SpriteFont blueScreenCompleteFont, introScreenFont;
         Screen screen;
 
         public Game1()
@@ -75,15 +75,18 @@ namespace Monogame_Topic_3___Animation
 
             // TODO: use this.Content to load your game content here
 
-            //Textures
+            //Tribbles
             greyTribbleTexture = Content.Load<Texture2D>("tribbleGrey");
             brownTribbleTexture = Content.Load<Texture2D>("tribbleBrown");
             orangeTribbleTexture = Content.Load<Texture2D>("tribbleOrange");
             creamTribbleTexture = Content.Load<Texture2D>("tribbleCream");
             blueScreenTexture = Content.Load<Texture2D>("Blue screen of death");
 
-            blueScreenComplete = Content.Load<SpriteFont>("BlueScreenCountFont");
+            //Fonts
+            blueScreenCompleteFont = Content.Load<SpriteFont>("BlueScreenCountFont");
+            introScreenFont = Content.Load<SpriteFont>("IntroScreen");
 
+            //Screens
             tribbleIntroTexture = Content.Load<Texture2D>("tribbleIntro");
             tribbleEndTexture = Content.Load<Texture2D>("tribbleEnd");
         }
@@ -224,24 +227,29 @@ namespace Monogame_Topic_3___Animation
             // TODO: Add your drawing code here
             _spriteBatch.Begin();
 
+            //Intro Screen
             if (screen == Screen.Intro)
             {
                 _spriteBatch.Draw(tribbleIntroTexture, window, Color.White);
+                _spriteBatch.DrawString(introScreenFont, "Press Left Click To See The Tribbles", new Vector2(10, 10), Color.White);
             }
 
+            //Tribble Yard
             else if (screen == Screen.TribbleYard)
             {
+                //Drawing Tribbles
                 _spriteBatch.Draw(greyTribbleTexture, greyTribbleRect, Color.White);
                 _spriteBatch.Draw(brownTribbleTexture, brownTribbleRect, Color.White);
                 _spriteBatch.Draw(orangeTribbleTexture, orangeTribbleRect, Color.White);
                 _spriteBatch.Draw(creamTribbleTexture, creamTribbleRect, Color.White);
 
+                //Drawing Bluescreen
                 if (blueScreen == true)
                 {
                     blueScreenCompleteCount += seconds;
                     roundedBlueScreenCompleteCount = (float)Decimal.Round((decimal)(float)blueScreenCompleteCount, 0);
                     _spriteBatch.Draw(blueScreenTexture, blueScreenRect, Color.White);
-                    _spriteBatch.DrawString(blueScreenComplete, Convert.ToString(roundedBlueScreenCompleteCount), new Vector2(85, 343), Color.White);
+                    _spriteBatch.DrawString(blueScreenCompleteFont, Convert.ToString(roundedBlueScreenCompleteCount), new Vector2(85, 343), Color.White);
                     if (roundedBlueScreenCompleteCount == 100)
                     {
                         blueScreen = false;
@@ -255,6 +263,7 @@ namespace Monogame_Topic_3___Animation
                 }
             }
 
+            //End Screen (game ends after three blue screens)
             else if (screen == Screen.End)
             {
                 _spriteBatch.Draw(tribbleEndTexture, window, Color.White);
