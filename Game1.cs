@@ -27,8 +27,7 @@ namespace Monogame_Topic_3___Animation
         Texture2D greyTribbleTexture, brownTribbleTexture, orangeTribbleTexture, creamTribbleTexture, blueScreenTexture, tribbleIntroTexture, tribbleEndTexture;
         Rectangle greyTribbleRect, brownTribbleRect, orangeTribbleRect, creamTribbleRect, window, blueScreenRect;
         Vector2 greyTribbleSpeed, brownTribbleSpeed, orangeTribbleSpeed, creamTribbleSpeed;
-        int creamTribbleX, creamTribbleY, creamTribbleSpeedX = -3, creamTribbleSpeedY = -2, greyTribbleWidth = 100, greyTribbleHeight = 100;
-        int creamTribbleWidth = 90, creamTribbleHeight = 90, blueScreenCount = 0;
+        int creamTribbleX, creamTribbleY, creamTribbleSpeedX = -3, creamTribbleSpeedY = -2, greyTribbleWidth = 100, greyTribbleHeight = 100, blueScreenCount = 0;
         MouseState mouseState, prevMouseState;
         SpriteFont blueScreenCompleteFont, introScreenFont;
         Screen screen;
