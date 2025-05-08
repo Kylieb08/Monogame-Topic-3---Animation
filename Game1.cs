@@ -11,6 +11,7 @@ namespace Monogame_Topic_3___Animation
     { 
         Intro, 
         TribbleYard,
+        BlueScreen,
         End
     }
 
@@ -20,7 +21,9 @@ namespace Monogame_Topic_3___Animation
         Random generator = new Random();
 
         bool blueScreen = false;
-        float seconds, blueScreenCompleteCount, roundedBlueScreenCompleteCount;
+        float seconds, blueScreenCompleteCount;
+
+        int bluePercent;
 
         private GraphicsDeviceManager _graphics;
         private SpriteBatch _spriteBatch;
@@ -124,12 +127,22 @@ namespace Monogame_Topic_3___Animation
                 {
                     if (greyTribbleRect.Contains(mouseState.Position))
                     {
-                        blueScreen = true;
-                        blueScreenCount += 1;
+                        if (blueScreenCount >= 3)
+                        {
+                            screen = Screen.End;
+                        }
+                        else
+                        {
+                            screen = Screen.BlueScreen;
+                            bluePercent = 0;
+                            blueScreenCount += 1;
+                            seconds = 0f;
+                        }
+                        
                     }
                 }
 
-                seconds = (float)gameTime.ElapsedGameTime.TotalSeconds;
+                
 
                 //Brown tribble
                 brownTribbleRect.X += (int)brownTribbleSpeed.X;
@@ -213,6 +226,21 @@ namespace Monogame_Topic_3___Animation
                     creamTribbleSpeed.Y *= -1;
                 }
             }
+            else if (screen == Screen.BlueScreen)
+            {
+                seconds += (float)gameTime.ElapsedGameTime.TotalSeconds;
+                if (seconds >= 1)
+                {
+                    bluePercent += generator.Next(2, 12);
+                    seconds = 0;
+                }
+
+                if (bluePercent >= 100)
+                {
+                    screen = Screen.TribbleYard;
+                }
+                
+            }
 
             
 
@@ -242,25 +270,13 @@ namespace Monogame_Topic_3___Animation
                 _spriteBatch.Draw(orangeTribbleTexture, orangeTribbleRect, Color.White);
                 _spriteBatch.Draw(creamTribbleTexture, creamTribbleRect, Color.White);
 
-                //Drawing Bluescreen
-                if (blueScreen == true)
-                {
-                    //if (seconds)
-                    blueScreenCompleteCount += generator.Next(2, 8);
-                    roundedBlueScreenCompleteCount = (float)Decimal.Round((decimal)(float)blueScreenCompleteCount, 0);
-                    _spriteBatch.Draw(blueScreenTexture, blueScreenRect, Color.White);
-                    _spriteBatch.DrawString(blueScreenCompleteFont, Convert.ToString(roundedBlueScreenCompleteCount), new Vector2(85, 343), Color.White);
-                    if (roundedBlueScreenCompleteCount == 100)
-                    {
-                        blueScreen = false;
-                        blueScreenCompleteCount = 0;
-                    }
-                    if (blueScreenCount >= 4)
-                    {
-                        screen = Screen.End;
-                    }
+            }
 
-                }
+            //Blue Screen
+            else if (screen == Screen.BlueScreen)
+            {
+                _spriteBatch.Draw(blueScreenTexture, blueScreenRect, Color.White);
+                _spriteBatch.DrawString(blueScreenCompleteFont, bluePercent + "", new Vector2(85, 343), Color.White);
             }
 
             //End Screen (game ends after three blue screens)
