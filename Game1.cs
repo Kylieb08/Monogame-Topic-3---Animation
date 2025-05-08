@@ -19,21 +19,16 @@ namespace Monogame_Topic_3___Animation
     {
 
         Random generator = new Random();
-
-        bool blueScreen = false;
-        float seconds, blueScreenCompleteCount;
-
-        int bluePercent;
-
         private GraphicsDeviceManager _graphics;
         private SpriteBatch _spriteBatch;
         Texture2D greyTribbleTexture, brownTribbleTexture, orangeTribbleTexture, creamTribbleTexture, blueScreenTexture, tribbleIntroTexture, tribbleEndTexture;
         Rectangle greyTribbleRect, brownTribbleRect, orangeTribbleRect, creamTribbleRect, window, blueScreenRect;
         Vector2 greyTribbleSpeed, brownTribbleSpeed, orangeTribbleSpeed, creamTribbleSpeed;
-        int creamTribbleX, creamTribbleY, creamTribbleSpeedX = -3, creamTribbleSpeedY = -2, greyTribbleWidth = 100, greyTribbleHeight = 100, blueScreenCount = 0;
+        int creamTribbleX, creamTribbleY, creamTribbleSpeedX = -3, creamTribbleSpeedY = -2, greyTribbleWidth = 100, greyTribbleHeight = 100, blueScreenCount = 0, bluePercent;
         MouseState mouseState, prevMouseState;
         SpriteFont blueScreenCompleteFont, introScreenFont;
         Screen screen;
+        float seconds;
 
         public Game1()
         {
@@ -65,8 +60,6 @@ namespace Monogame_Topic_3___Animation
             creamTribbleSpeed = new Vector2 (creamTribbleSpeedX, creamTribbleSpeedY);
 
             blueScreenRect = new Rectangle(0, 0, 800, 600);
-
-            blueScreenCompleteCount = 0;
 
             base.Initialize();
         }
@@ -138,11 +131,8 @@ namespace Monogame_Topic_3___Animation
                             blueScreenCount += 1;
                             seconds = 0f;
                         }
-                        
                     }
                 }
-
-                
 
                 //Brown tribble
                 brownTribbleRect.X += (int)brownTribbleSpeed.X;
@@ -226,6 +216,7 @@ namespace Monogame_Topic_3___Animation
                     creamTribbleSpeed.Y *= -1;
                 }
             }
+
             else if (screen == Screen.BlueScreen)
             {
                 seconds += (float)gameTime.ElapsedGameTime.TotalSeconds;
@@ -239,10 +230,8 @@ namespace Monogame_Topic_3___Animation
                 {
                     screen = Screen.TribbleYard;
                 }
-                
-            }
 
-            
+            }
 
             base.Update(gameTime);
         }
